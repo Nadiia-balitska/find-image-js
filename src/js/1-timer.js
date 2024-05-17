@@ -7,9 +7,8 @@ import "izitoast/dist/css/iziToast.min.css";
 const startBtn = document.querySelector('.start-btn');
 const inputEl = document.querySelector('[type="text"]');
 const timerEl = document.querySelector('.timer');
-const field = document.querySelector('.field');
-let userSelectedDate;
 
+let userSelectedDate;
 let intervalId = null;
 //!===================================================================
 const options = {
