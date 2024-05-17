@@ -12,18 +12,24 @@
     <form class="form">
       <label class="delay">
         Delay (ms)
-        <input type="number" name="delay" required />
+        <input class="delay-inp" type="number" name="delay" required />
       </label>
 
-      <fieldset>
+      <fieldset class="state-field">
         <legend>State</legend>
-        <label class="label">
-          <input type="radio" name="state" value="fulfilled" required />
+        <label class="label-acs">
+          <input
+            class="input-acs"
+            type="radio"
+            name="state"
+            value="fulfilled"
+            required
+          />
           Fulfilled
         </label>
-        <label>
+        <label class="label-rjc">
           <input
-            class="label"
+            class="input-rjc"
             type="radio"
             name="state"
             value="rejected"
@@ -33,7 +39,7 @@
         </label>
       </fieldset>
 
-      <button type="submit">Create notification</button>
+      <button class="btn-notif" type="submit">Create notification</button>
     </form>
 
     <script type="module" src="./js/2-snackbar.js"></script>
