@@ -2,13 +2,23 @@ import iziToast from "izitoast";
 import "izitoast/dist/css/iziToast.min.css";
 import SimpleLightbox from "simplelightbox";
 import "simplelightbox/dist/simple-lightbox.min.css";
+
 import { createMarkup } from "./js/render-functions.js";
-import { getPhotos } from "./js/pixabay-api";
-import errorSvg from "./img/error.svg"
+import { getPhotos } from "./js/pixabay-api.js";
+
+import errorSvg from "./img/error.svg";
+
 
 const formEl = document.querySelector(".js-form");
 const listEl = document.querySelector(".js-gallery");
 const target = document.querySelector(".js-backdrop");
+
+
+const lightbox = new SimpleLightbox('.js-gallery a', {
+   captions: true,
+    captionsData: 'alt', 
+    captionDelay: 250  
+});
 
 
 formEl.addEventListener('submit', onSubmit);
@@ -17,12 +27,13 @@ function onSubmit(e) {
     e.preventDefault();
     listEl.innerHTML = "";
 
-    showSpinner();
-    const searchQuery = e.currentTarget.elements['search-query'].value.trim();
+  showSpinner();
+  
+    const searchQuery = e.currentTarget.elements["search-query"].value.trim();
 
-    getPhotos(searchQuery)
+ getPhotos(searchQuery)
         .then((res) => {
-            if (res.results.length === 0) {
+            if (res.hits.length === 0) {
                 return iziToast.error({
                     title: 'Error',
                     titleColor: '#fff',
@@ -30,18 +41,13 @@ function onSubmit(e) {
                     iconUrl: errorSvg,
                     message: "Sorry, there are no images matching your search query. Please try again!",
                     backgroundColor: 'red',
-                    position: 'topLeft'
+                    position: "topRight"
                 });
             }
 
-listEl.innerHTML = createMarkup(res.results);
+listEl.innerHTML = createMarkup(res.hits);
 
-const lightbox = new SimpleLightbox('.gallery a', {
-   captions: true,
-    captionsData: 'alt', 
-    captionDelay: 250  
-});
-  listEl.refresh();
+ lightbox.refresh();
 
 
         })
