@@ -2,8 +2,9 @@ import iziToast from "izitoast";
 import "izitoast/dist/css/iziToast.min.css";
 import SimpleLightbox from "simplelightbox";
 import "simplelightbox/dist/simple-lightbox.min.css";
-import {createMarkup} from './src/js/render-function'
-
+import { createMarkup } from "./js/render-functions.js";
+import { getPhotos } from "./js/pixabay-api";
+import errorSvg from "./img/error.svg"
 
 const formEl = document.querySelector(".js-form");
 const listEl = document.querySelector(".js-gallery");
@@ -29,11 +30,20 @@ function onSubmit(e) {
                     iconUrl: errorSvg,
                     message: "Sorry, there are no images matching your search query. Please try again!",
                     backgroundColor: 'red',
-                    position: 'topRight'
+                    position: 'topLeft'
                 });
             }
 
-            listEl.innerHTML = createMarkup(res.results);
+listEl.innerHTML = createMarkup(res.results);
+
+const lightbox = new SimpleLightbox('.gallery a', {
+   captions: true,
+    captionsData: 'alt', 
+    captionDelay: 250  
+});
+  listEl.refresh();
+
+
         })
         .catch(console.log)
         .finally(() => {
