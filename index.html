@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Homework 11</title>
+    <link rel="stylesheet" href="./src/css/styles.css" />
+  </head>
+
+  <body>
+    <section class="gallery-section">
+      <div class="container">
+        <form class="search-form js-form">
+          <input
+            type="text"
+            name="search-query"
+            class="search-input"
+            placeholder="Search images..."
+          />
+          <button type="submit" class="search-btn">Search</button>
+        </form>
+
+        <ul class="gallery js-gallery"></ul>
+        <div class="backdrop js-backdrop is-hidden"></div>
+      </div>
+    </section>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/spin@0.0.1/dist/spin.min.js"
+      integrity="sha256-FMkqC6Cob1FdCi0E2P7KMnr4xUmxOCrNQlpAITyiXdQ="
+      crossorigin="anonymous"
+    ></script>
+
+    <script type="module" src="./main.js"></script>
+  </body>
+</html>
