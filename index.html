@@ -2,29 +2,39 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>homework10</title>
+    <title>Homework 11</title>
     
-    <link rel="stylesheet" href="/goit-js-hw-10/assets/styles-247f5e21.css">
+    <script type="module" crossorigin src="/goit-js-hw-11/commonHelpers.js"></script>
+    <link rel="modulepreload" crossorigin href="/goit-js-hw-11/assets/vendor-8c59ed88.js">
+    <link rel="stylesheet" href="/goit-js-hw-11/assets/vendor-1cd1f9d9.css">
+    <link rel="stylesheet" href="/goit-js-hw-11/assets/index-7cc9de8d.css">
   </head>
-  <body>
-    <header class="header">
-      <nav class="nav">
-        <ul class="nav-list">
-          <li class="nav-item">
-            <a href="./1-timer.html" class="nav-link">Timer</a>
-          </li>
 
-          <li class="nav-item">
-            <a href="./2-snackbar.html" class="nav-link">Snackbar</a>
-          </li>
-        </ul>
-      </nav>
-    </header>
-    <!-- ENOENT: no such file or directory, open '/home/runner/work/goit-js-hw-10/goit-js-hw-10/src/partials/header.html'
-    ENOENT: no such file or directory, open '/home/runner/work/goit-js-hw-10/goit-js-hw-10/src/partials/1-gallery.html' -->
-    <!-- <script type="module" src="./js/1-gallery.js"></script> -->
-    <!-- <script type="module" src="./js/2-form.js"></script> -->
+  <body>
+    <section class="gallery-section">
+      <div class="container">
+        <form class="search-form js-form">
+          <input
+            type="text"
+            name="search-query"
+            class="search-input"
+            placeholder="Search images..."
+          />
+          <button type="submit" class="search-btn">Search</button>
+        </form>
+
+        <ul class="gallery js-gallery"></ul>
+        <div class="backdrop js-backdrop is-hidden"></div>
+      </div>
+    </section>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/spin@0.0.1/dist/spin.min.js"
+      integrity="sha256-FMkqC6Cob1FdCi0E2P7KMnr4xUmxOCrNQlpAITyiXdQ="
+      crossorigin="anonymous"
+    ></script>
+
+    
   </body>
 </html>
