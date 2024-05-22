@@ -29,7 +29,7 @@ function onSubmit(e) {
 
   showSpinner();
   
-    const searchQuery = e.currentTarget.elements["search-query"].value.trim();
+  const searchQuery = e.currentTarget.elements["search-query"].value.trim();
 
  getPhotos(searchQuery)
         .then((res) => {
