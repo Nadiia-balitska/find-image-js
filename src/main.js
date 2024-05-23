@@ -24,12 +24,25 @@ const lightbox = new SimpleLightbox('.js-gallery a', {
 formEl.addEventListener('submit', onSubmit);
 
 function onSubmit(e) {
-    e.preventDefault();
-    listEl.innerHTML = "";
+  e.preventDefault();
+  const searchQuery = e.currentTarget.elements["search-query"].value.trim();
+  
+  if (searchQuery === '') {
+   return iziToast.warning({
+                    title: 'Error',
+                    titleColor: '#fff',
+                    messageColor: '#fff',
+                    iconUrl: errorSvg,
+                    message: "Enter all fields",
+                    backgroundColor: 'red',
+                    position: "topRight"
+                });
+}
+   
+listEl.innerHTML = '';
 
   showSpinner();
   
-  const searchQuery = e.currentTarget.elements["search-query"].value.trim();
 
  getPhotos(searchQuery)
         .then((res) => {
@@ -48,8 +61,6 @@ function onSubmit(e) {
 listEl.innerHTML = createMarkup(res.hits);
 
  lightbox.refresh();
-
-
         })
         .catch(console.log)
         .finally(() => {
