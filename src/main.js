@@ -4,7 +4,7 @@ import SimpleLightbox from "simplelightbox";
 import "simplelightbox/dist/simple-lightbox.min.css";
 
 import { createMarkup } from "./js/render-functions.js";
-import { getPhotos } from "./js/pixabay-api.js";
+import { getPhotos } from "./js/pixabay-api.js"
 
 import errorSvg from "./img/error.svg";
 
