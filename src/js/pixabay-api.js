@@ -1,5 +1,5 @@
 
-axios.defaults.baseURL = "https://pixabay.com/api";
+axios.defaults.baseURL = "https://pixabay.com/api/";
 
 export function getPhotos(q, page) {
     const params = {

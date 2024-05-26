@@ -82,9 +82,15 @@ async function onClick() {
     
     listEl.insertAdjacentHTML('beforeend', createMarkup(response.data.hits));
 
-    // let elem = document.querySelector(".gallery-item");
-    // let rect = elem.getBoundingClientRect();
-    // window.scrollByPages(2 * rect);
+    let elem = document.querySelector(".gallery-item");
+    let rect = elem.getBoundingClientRect();
+  //   window.scrollBy(2, {
+  // top: rect,
+  // behavior: "smooth",
+  //   });
+    // window.scrollBy(2, -rect);
+
+    window.scrollBy(rect);
 
     if (response.data.totalHits === page) {
       loadMoreBtn.classList.add('is-hidden');
