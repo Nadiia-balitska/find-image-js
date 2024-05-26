@@ -36,7 +36,7 @@ async function onSubmit(e) {
   searchQuery = e.currentTarget.elements["search-query"].value.trim();
   try {
     const response = await getPhotos(searchQuery, page);
-    iziToast.message(`we found ${response.totalHits} photos`);
+    // iziToast.message(`we found ${response.data.totalHits} photos`);
     if (searchQuery === '') {
       return iziToast.warning({
         title: 'Error',
@@ -49,7 +49,7 @@ async function onSubmit(e) {
       });
         
     }
-    if (response.hits.length === 0) {
+    if (response.data.hits.length === 0) {
       loadMoreBtn.classList.add("is-hidden");
       return iziToast.error({
         title: 'Error',
@@ -62,8 +62,8 @@ async function onSubmit(e) {
       });
     }
     
-    listEl.innerHTML = createMarkup(response.hits);
-    response.totalHits < 15 ? loadMoreBtn.classList.add("is-hidden"): loadMoreBtn.classList.remove("is-hidden");
+    listEl.innerHTML = createMarkup(response.data.hits);
+    response.data.totalHits < 15 ? loadMoreBtn.classList.add("is-hidden"): loadMoreBtn.classList.remove("is-hidden");
     
      lightbox.refresh();
   } catch (error) {
@@ -80,12 +80,13 @@ async function onClick() {
   try {
     const response = await getPhotos(searchQuery, page);
     
-    listEl.insertAdjacentHTML('beforeend', createMarkup(response.hits));
+    listEl.insertAdjacentHTML('beforeend', createMarkup(response.data.hits));
 
-    listEl.getBoundingClientRect();
-    window.scrollByPages(-2);
+    // let elem = document.querySelector(".gallery-item");
+    // let rect = elem.getBoundingClientRect();
+    // window.scrollByPages(2 * rect);
 
-    if (response.totalHits === page) {
+    if (response.data.totalHits === page) {
       loadMoreBtn.classList.add('is-hidden');
       return iziToast.message("We're sorry, but you've reached the end of search results.");
     }

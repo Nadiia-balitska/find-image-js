@@ -1,5 +1,5 @@
 
-axios.defaults.baseURL = "https://pixabay.com";
+axios.defaults.baseURL = "https://pixabay.com/api";
 
 export function getPhotos(q, page) {
     const params = {
@@ -10,8 +10,9 @@ export function getPhotos(q, page) {
             image_type: "photo",
             orientation: "horizontal",
             safesearch: true,
+            key: '44004812-c52c8438ab8e6871c63eadf8f',
         },
     };
 
-    return axios.get("/api", params);
+    return axios.get("", params);
  }
