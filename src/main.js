@@ -82,19 +82,22 @@ async function onClick() {
     
     listEl.insertAdjacentHTML('beforeend', createMarkup(response.data.hits));
 
-    let elem = document.querySelector(".gallery-item");
-    let rect = elem.getBoundingClientRect();
-  //   window.scrollBy(2, {
-  // top: rect,
-  // behavior: "smooth",
-  //   });
-    // window.scrollBy(2, -rect);
+    lightbox.refresh();
+    
+    const { height: cardHeight } = document.querySelector('.gallery').firstElementChild.getBoundingClientRect();
+    window.scrollBy({
+      top: cardHeight * 2,
+      behavior: "smooth",
+    }
+    )
 
-    window.scrollBy(rect);
 
-    if (response.data.totalHits === page) {
+
+
+    const lastPage = Math.ceil(response.data.totalHits / 15);
+    if (lastPage === page) {
       loadMoreBtn.classList.add('is-hidden');
-      return iziToast.message("We're sorry, but you've reached the end of search results.");
+     iziToast.info({message: "We're sorry, but you've reached the end of search results."});
     }
   } catch (error) {
     console.log(error);
